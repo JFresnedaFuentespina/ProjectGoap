@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GoToHospital : GAction
+public class GoToReception : GAction
 {
-    
+
     public override bool PostPerform()
     {
         return true;
