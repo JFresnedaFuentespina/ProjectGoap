@@ -50,10 +50,13 @@ public abstract class GAgent : MonoBehaviour
     {
         if (currentAction != null && currentAction.running)
         {
-            float distanceToTarget = Vector3.Distance(currentAction.target.transform.position, this.transform.position);
+            if (currentAction.target != null)
+            {
+                currentAction.agent.SetDestination(currentAction.target.transform.position);
+            }
+
             if (!currentAction.agent.pathPending &&
-                (currentAction.agent.remainingDistance <= currentAction.agent.stoppingDistance ||
-                 currentAction.agent.velocity.sqrMagnitude < 0.01f))
+                currentAction.agent.remainingDistance <= currentAction.agent.stoppingDistance)
             {
                 if (!invoked)
                 {
@@ -95,15 +98,18 @@ public abstract class GAgent : MonoBehaviour
             currentAction = actionQueue.Dequeue();
             if (currentAction.PrePerform())
             {
-                if (currentAction.target == null && currentAction.targetTag != "")
+                if (currentAction.target == null)
                 {
-                    currentAction.target = GameObject.FindWithTag(currentAction.targetTag);
+                    if (currentAction.targetTag != "")
+                    {
+                        currentAction.target = GameObject.FindWithTag(currentAction.targetTag);
+                    }
                 }
 
                 if (currentAction.target != null)
                 {
                     currentAction.running = true;
-                    currentAction.agent.SetDestination(currentAction.target.transform.position);
+                    // currentAction.agent.SetDestination(currentAction.target.transform.position);
                 }
             }
             else

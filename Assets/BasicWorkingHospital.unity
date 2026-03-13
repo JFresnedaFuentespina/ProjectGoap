@@ -1556,14 +1556,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GetPatient
   actionName: GetPatient
   cost: 1
-  target: {fileID: 1000317771}
+  target: {fileID: 0}
   targetTag: 
   duration: 0
   preContidions:
   - key: Waiting
-    value: 0
+    value: 1
   - key: FreeCubicle
-    value: 0
+    value: 1
   afterEffects:
   - key: treatPatient
     value: 1
