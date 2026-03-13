@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GoHome : GAction
+public class Rest : GAction
 {
     public override bool PrePerform()
     {
@@ -9,7 +9,7 @@ public class GoHome : GAction
 
     public override bool PostPerform()
     {
-        Destroy(gameObject);
+        beliefs.RemoveState("exhausted");
         return true;
     }
 
