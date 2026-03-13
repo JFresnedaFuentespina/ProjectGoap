@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GoToHospital : GAction
+public class GoHome : GAction
 {
     public override bool PrePerform()
     {
@@ -11,4 +11,5 @@ public class GoToHospital : GAction
     {
         return true;
     }
+
 }

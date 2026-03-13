@@ -25,6 +25,7 @@ public sealed class GWorld
         {
             world.ModifyState("FreeCubicle", cubes.Length);
         }
+        Time.timeScale = 4;
     }
 
     private GWorld()
