@@ -283,7 +283,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6142110656150988670, guid: 51e437be22296b340954bf6591a60065, type: 3}
+    - {fileID: 1019698093248980443, guid: 51e437be22296b340954bf6591a60065, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -542,7 +544,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6142110656150988670, guid: 51e437be22296b340954bf6591a60065, type: 3}
+    - {fileID: 1019698093248980443, guid: 51e437be22296b340954bf6591a60065, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -798,7 +802,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6142110656150988670, guid: 51e437be22296b340954bf6591a60065, type: 3}
+    - {fileID: 1019698093248980443, guid: 51e437be22296b340954bf6591a60065, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3435,7 +3441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawn
   patientPrefab: {fileID: 7881807149238628900, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-  numPatients: 1
+  numPatients: 0
 --- !u!1001 &1475124860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3488,7 +3494,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6142110656150988670, guid: 51e437be22296b340954bf6591a60065, type: 3}
+    - {fileID: 1019698093248980443, guid: 51e437be22296b340954bf6591a60065, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
