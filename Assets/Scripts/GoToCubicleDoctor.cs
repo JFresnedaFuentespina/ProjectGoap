@@ -72,7 +72,10 @@ public class GoToCubicleDoctor : GAction
         Cubicle cubicleComp = target.GetComponent<Cubicle>();
         if (cubicleComp != null && cubicleComp.currentPatient != null)
         {
+            Doctor doctor = agent.GetComponent<Doctor>();
             GameObject patient = cubicleComp.currentPatient;
+
+            doctor.patient = patient;
             int patientID = patient.GetInstanceID();
 
             // Marca que este paciente específico está siendo tratado

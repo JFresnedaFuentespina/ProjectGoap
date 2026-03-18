@@ -3220,7 +3220,7 @@ MonoBehaviour:
     value: 1
   afterEffects:
   - key: isCured
-    value: 1
+    value: 0
   agent: {fileID: 0}
   running: 0
 --- !u!114 &7822748054014771442

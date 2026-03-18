@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Doctor : GAgent
 {
+    public GameObject patient;
     new void Start()
     {
         base.Start();
