@@ -9,6 +9,8 @@ public sealed class GWorld
     private static Queue<GameObject> patients;
     private static Queue<GameObject> cubicles;
     private static Dictionary<string, int> globalInts = new Dictionary<string, int>();
+    private static Dictionary<int, bool> patientsBeingTreated = new Dictionary<int, bool>();
+
     static GWorld()
     {
         world = new WorldStates();
@@ -83,5 +85,14 @@ public sealed class GWorld
     public bool HasGlobal(string key)
     {
         return globalInts.ContainsKey(key);
+    }
+    public void SetPatientBeingTreated(int patientID, bool value)
+    {
+        patientsBeingTreated[patientID] = value;
+    }
+
+    public bool IsPatientBeingTreated(int patientID)
+    {
+        return patientsBeingTreated.ContainsKey(patientID) && patientsBeingTreated[patientID];
     }
 }

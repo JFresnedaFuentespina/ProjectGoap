@@ -3219,7 +3219,7 @@ MonoBehaviour:
   - key: waitingDoctor
     value: 1
   afterEffects:
-  - key: isCured
+  - key: doctorArrived
     value: 1
   agent: {fileID: 0}
   running: 0

@@ -24,10 +24,18 @@ public class GoToCubicleNurse : GAction
         {
             GWorld.Instance.SetGlobal("PatientCubicleID", cubicleComp.id);
             Debug.Log("Nurse PostPerform: Asignado cubículo con ID = " + cubicleComp.id + " en GWorld");
-        }
-        else
-        {
-            Debug.Log("Nurse PostPerform: ERROR, cubículo no tiene componente Cubicle");
+
+            // **Asignar paciente al cubículo**
+            GameObject patient = inventory.FindItemWithTag("Patient"); // obtiene el paciente del inventario
+            if (patient != null)
+            {
+                cubicleComp.currentPatient = patient;
+                Debug.Log("Nurse PostPerform: paciente " + patient.name + " asignado al cubículo");
+            }
+            else
+            {
+                Debug.Log("Nurse PostPerform: ERROR, no se encontró el paciente en el inventario");
+            }
         }
 
         GWorld.Instance.AddCubicle(target);

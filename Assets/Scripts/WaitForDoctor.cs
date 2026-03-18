@@ -4,13 +4,15 @@ public class WaitForDoctor : GAction
 {
     public override bool PrePerform()
     {
+        int patientID = agent.gameObject.GetInstanceID();
+
         if (!beliefs.HasState("waitingDoctor"))
             return false;
 
-        // Aquí el paciente mira si el doctor ya empezó a tratarlo
-        if (!GWorld.Instance.GetWorld().HasState("treatPatient"))
+        // Verifica si este paciente está siendo tratado
+        if (!GWorld.Instance.IsPatientBeingTreated(patientID))
         {
-            Debug.Log("Paciente WaitForDoctor: esperando al doctor...");
+            Debug.Log("Paciente " + agent.name + ": esperando a ser tratado por doctor...");
             return false;
         }
 
@@ -18,8 +20,9 @@ public class WaitForDoctor : GAction
     }
     public override bool PostPerform()
     {
-        beliefs.ModifyState("isCured", 1); // paciente recibe el tratamiento
-        Debug.Log("Paciente WaitForDoctor: tratamiento completado, puede irse.");
+        int patientID = agent.gameObject.GetInstanceID();
+        GWorld.Instance.SetPatientBeingTreated(patientID, false); // liberar estado
+        beliefs.ModifyState("isCured", 1);
         return true;
     }
 }

@@ -3349,7 +3349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatientManager
   count: 0
-  maxPatients: 1
+  maxPatients: 2
 --- !u!1001 &1475124860
 PrefabInstance:
   m_ObjectHideFlags: 0
