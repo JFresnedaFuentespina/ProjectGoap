@@ -51,9 +51,9 @@ public class GoToCubicleDoctor : GAction
 
     public override bool PostPerform()
     {
-        beliefs.ModifyState("treatPatient", 1);
-        GWorld.Instance.GetWorld().ModifyState("beingTreated", -1);
-        Debug.Log("Doctor PostPerform: Tratamiento completado");
+        // El doctor marca que está tratando al paciente
+        GWorld.Instance.GetWorld().ModifyState("treatPatient", 1);
+        Debug.Log("Doctor GoToCubicleDoctor: paciente está siendo tratado");
         return true;
     }
 }

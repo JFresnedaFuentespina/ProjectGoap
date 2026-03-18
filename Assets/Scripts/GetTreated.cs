@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GetTreated : GAction
 {
+    public bool isDoctor = false;
 
     public override bool PrePerform()
     {
