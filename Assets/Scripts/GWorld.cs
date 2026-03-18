@@ -10,6 +10,7 @@ public sealed class GWorld
     private static Queue<GameObject> cubicles;
     private static Dictionary<string, int> globalInts = new Dictionary<string, int>();
     private static Dictionary<int, bool> patientsBeingTreated = new Dictionary<int, bool>();
+    private static int patientsGoneHome = 0;
 
     static GWorld()
     {
@@ -27,7 +28,7 @@ public sealed class GWorld
         {
             world.ModifyState("FreeCubicle", cubes.Length);
         }
-        // Time.timeScale = 4;
+        Time.timeScale = 4;
     }
 
     private GWorld()
@@ -94,5 +95,14 @@ public sealed class GWorld
     public bool IsPatientBeingTreated(int patientID)
     {
         return patientsBeingTreated.ContainsKey(patientID) && patientsBeingTreated[patientID];
+    }
+    public void PatientWentHome()
+    {
+        patientsGoneHome++;
+    }
+
+    public int GetPatientsGoneHome()
+    {
+        return patientsGoneHome;
     }
 }

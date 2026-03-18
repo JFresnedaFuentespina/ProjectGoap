@@ -2,22 +2,23 @@ using UnityEngine;
 
 public class Doctor : GAgent
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
     {
         base.Start();
+
+        // Meta principal: tratar pacientes
         Subgoal s1 = new Subgoal("treatPatient", 1, false);
-        goals.Add(s1, 3);
+        goals.Add(s1, 5);
 
-        // Subgoal s2 = new Subgoal("rested", 1, false);
-        // goals.Add(s2, 1);
-
-        // Invoke("GetTired", Random.Range(10, 20));
+        // Meta de descanso
+        Subgoal s2 = new Subgoal("rested", 1, true);
+        goals.Add(s2, 2);
     }
 
-    void GetTired()
+    // Llamado desde GoHome cuando corresponde
+    public void SetExhausted()
     {
-        beliefs.ModifyState("exhausted", 0);
-        Invoke("GetTired", Random.Range(10,20));   
+        beliefs.ModifyState("exhausted", 1);
+        Debug.Log("Doctor está exhausto y puede descansar");
     }
 }

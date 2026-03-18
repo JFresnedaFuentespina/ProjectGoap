@@ -667,10 +667,10 @@ GameObject:
   - component: {fileID: 502920323886375603}
   - component: {fileID: -9178540875007766436}
   - component: {fileID: 1314719950129966554}
-  - component: {fileID: 620492068675955045}
+  - component: {fileID: 7522723000220157656}
   m_Layer: 0
   m_Name: Doctor
-  m_TagString: Untagged
+  m_TagString: Doctor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,8 +770,6 @@ MonoBehaviour:
   targetTag: 
   duration: 0
   preContidions:
-  - key: doctorArrived
-    value: 1
   - key: treatPatient
     value: 1
   afterEffects:
@@ -780,22 +778,22 @@ MonoBehaviour:
   agent: {fileID: 1642673439812505920}
   running: 0
   isDoctor: 1
---- !u!114 &620492068675955045
+--- !u!114 &7522723000220157656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3300799546944532708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bdabf87d3a03ff418461556dc8489af, type: 3}
+  m_Script: {fileID: 11500000, guid: 3770b88a361492a44ac1711dcae0008e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rest
-  actionName: GoRest
+  m_EditorClassIdentifier: Assembly-CSharp::RestDoctor
+  actionName: RestDoctor
   cost: 1
   target: {fileID: 0}
-  targetTag: Lounge
+  targetTag: 
   duration: 0
   preContidions:
   - key: exhausted

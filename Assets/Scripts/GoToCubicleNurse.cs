@@ -26,7 +26,8 @@ public class GoToCubicleNurse : GAction
             Debug.Log("Nurse PostPerform: Asignado cubículo con ID = " + cubicleComp.id + " en GWorld");
 
             // **Asignar paciente al cubículo**
-            GameObject patient = inventory.FindItemWithTag("Patient"); // obtiene el paciente del inventario
+            Nurse nurse = agent.GetComponent<Nurse>();
+            GameObject patient = nurse.carryingPatient;
             if (patient != null)
             {
                 cubicleComp.currentPatient = patient;

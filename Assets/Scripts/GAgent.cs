@@ -36,6 +36,12 @@ public abstract class GAgent : MonoBehaviour
             actions.Add(a);
         }
     }
+    public void Replan()
+    {
+        planner = null;
+        actionQueue = null;
+        currentAction = null;
+    }
 
     bool invoked = false;
     void CompleteAction()

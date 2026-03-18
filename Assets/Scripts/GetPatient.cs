@@ -35,6 +35,8 @@ public class GetPatient : GAction
 
         if (target)
         {
+            Nurse nurse = agent.GetComponent<Nurse>();
+            nurse.carryingPatient = target;
             target.GetComponent<GAgent>().inventory.AddItem(resource);
         }
 

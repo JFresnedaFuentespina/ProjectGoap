@@ -11,6 +11,7 @@ TagManager:
   - Cubicle
   - Reception
   - Patient
+  - Doctor
   layers:
   - Default
   - TransparentFX

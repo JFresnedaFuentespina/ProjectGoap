@@ -3214,12 +3214,12 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 0
+  duration: 20
   preContidions:
   - key: waitingDoctor
     value: 1
   afterEffects:
-  - key: doctorArrived
+  - key: isCured
     value: 1
   agent: {fileID: 0}
   running: 0
