@@ -51,7 +51,7 @@ public class GPlanner
         bool success = BuildGraph(start, leaves, usableActions, goal);
         if (!success)
         {
-            Debug.Log("NO PLAN");
+            // Debug.Log("NO PLAN");
             return null;
         }
 
@@ -88,11 +88,11 @@ public class GPlanner
             queue.Enqueue(a);
         }
 
-        Debug.Log("The Plan is: ");
-        foreach (GAction a in queue)
-        {
-            Debug.Log("Q: " + a.actionName);
-        }
+        // Debug.Log("The Plan is: ");
+        // foreach (GAction a in queue)
+        // {
+        //     Debug.Log("Q: " + a.actionName);
+        // }
 
         return queue;
     }

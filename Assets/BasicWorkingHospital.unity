@@ -316,6 +316,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 1, y: 0, z: 0.85}
+--- !u!114 &210231173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210231169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86226fda870c53049bdabb435cbf28a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cubicle
+  id: 1
 --- !u!1 &306721101
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,38 +611,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 485724197}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
---- !u!1 &485724196 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
-  m_PrefabInstance: {fileID: 485724195}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &485724197
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485724196}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &501906072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1461,6 +1444,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1297144309}
+    - targetCorrespondingSourceObject: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1297144311}
   m_SourcePrefab: {fileID: 100100000, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
 --- !u!1 &871944019
 GameObject:
@@ -1601,10 +1587,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1019698093248980443, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 669346817}
     - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
       propertyPath: m_Name
       value: Nurse
@@ -2603,6 +2585,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 1, y: 0, z: 0.85}
+--- !u!114 &1297144311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297144307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86226fda870c53049bdabb435cbf28a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cubicle
+  id: 0
 --- !u!1 &1300565946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,6 +2880,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1971329682}
+    - targetCorrespondingSourceObject: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1971329684}
   m_SourcePrefab: {fileID: 100100000, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
 --- !u!1 &1445506242
 GameObject:
@@ -3351,7 +3349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatientManager
   count: 0
-  maxPatients: 8
+  maxPatients: 1
 --- !u!1001 &1475124860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4109,6 +4107,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
       insertIndex: -1
       addedObject: {fileID: 210231171}
+    - targetCorrespondingSourceObject: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 210231173}
   m_SourcePrefab: {fileID: 100100000, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
 --- !u!1 &1568256237
 GameObject:
@@ -4773,6 +4774,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 1, y: 0, z: 0.85}
+--- !u!114 &1971329684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971329680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86226fda870c53049bdabb435cbf28a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cubicle
+  id: 2
 --- !u!1 &1999376859
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,8 +5459,8 @@ SceneRoots:
   - {fileID: 811564243}
   - {fileID: 1184113939}
   - {fileID: 742992260}
-  - {fileID: 485724195}
   - {fileID: 1459027721}
+  - {fileID: 485724195}
   - {fileID: 881056959}
   - {fileID: 1475124860}
   - {fileID: 501906072}

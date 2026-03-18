@@ -8,7 +8,7 @@ public sealed class GWorld
     private static WorldStates world;
     private static Queue<GameObject> patients;
     private static Queue<GameObject> cubicles;
-
+    private static Dictionary<string, int> globalInts = new Dictionary<string, int>();
     static GWorld()
     {
         world = new WorldStates();
@@ -25,7 +25,7 @@ public sealed class GWorld
         {
             world.ModifyState("FreeCubicle", cubes.Length);
         }
-        Time.timeScale = 4;
+        // Time.timeScale = 4;
     }
 
     private GWorld()
@@ -63,5 +63,25 @@ public sealed class GWorld
     {
         if (cubicles.Count == 0) return null;
         return cubicles.Dequeue();
+    }
+
+    public void SetGlobal(string key, int value)
+    {
+        if (globalInts.ContainsKey(key))
+            globalInts[key] = value;
+        else
+            globalInts.Add(key, value);
+    }
+
+    public int GetGlobal(string key)
+    {
+        if (globalInts.ContainsKey(key))
+            return globalInts[key];
+        return -1;
+    }
+
+    public bool HasGlobal(string key)
+    {
+        return globalInts.ContainsKey(key);
     }
 }
