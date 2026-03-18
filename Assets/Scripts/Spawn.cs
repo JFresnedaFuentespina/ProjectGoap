@@ -3,23 +3,29 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public GameObject patientPrefab;
-    public int numPatients;
+    public PatientManager pm;
+    public bool canSpawn = true;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i < numPatients; i++)
-        {
-            SpawnPatient();
-        }
+    }
 
-        Invoke("SpawnPatient", 5);
+    void Update()
+    {
+        if (CanSpawn())
+            SpawnPatient();
+    }
+
+    bool CanSpawn()
+    {
+        return (pm.count < pm.maxPatients);
     }
 
     void SpawnPatient()
     {
+        pm.count++;
         Instantiate(patientPrefab, transform.position, Quaternion.identity);
-        Invoke("SpawnPatient", Random.Range(2, 10));
     }
 }
