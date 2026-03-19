@@ -46,14 +46,16 @@ public abstract class GAgent : MonoBehaviour
     bool invoked = false;
     void CompleteAction()
     {
+        Debug.Log("COMPLETANDO acción: " + currentAction.actionName);
         currentAction.running = false;
         currentAction.PostPerform();
+        Debug.Log("POSTPERFORM ejecutado de: " + currentAction.actionName);
         invoked = false;
     }
-
     // Update is called once per frame
     void LateUpdate()
     {
+
         if (currentAction != null && currentAction.running)
         {
             if (currentAction.target != null)
@@ -102,6 +104,7 @@ public abstract class GAgent : MonoBehaviour
         if (actionQueue != null && actionQueue.Count > 0)
         {
             currentAction = actionQueue.Dequeue();
+            Debug.Log("SIGUIENTE ACCIÓN: " + currentAction.actionName);
             if (currentAction.PrePerform())
             {
                 if (currentAction.target == null)

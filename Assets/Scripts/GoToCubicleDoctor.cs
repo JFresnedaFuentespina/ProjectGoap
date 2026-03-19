@@ -73,15 +73,21 @@ public class GoToCubicleDoctor : GAction
         if (cubicleComp != null && cubicleComp.currentPatient != null)
         {
             Doctor doctor = agent.GetComponent<Doctor>();
-            GameObject patient = cubicleComp.currentPatient;
+            doctor.patient = cubicleComp.currentPatient;
 
-            doctor.patient = patient;
-            int patientID = patient.GetInstanceID();
-
-            // Marca que este paciente específico está siendo tratado
+            int patientID = cubicleComp.currentPatient.GetInstanceID();
             GWorld.Instance.SetPatientBeingTreated(patientID, true);
 
-            Debug.Log("Doctor GoToCubicleDoctor: paciente " + patient.name + " está siendo tratado");
+            // Una vez que el paciente está asignado, elimina el cubículo de la lista global
+            GWorld.Instance.RemoveGlobal("PatientCubicleID");
+
+            // Agregar cubículo al inventario si quieres
+            inventory.AddItem(target);
+
+            // Activar la meta para GOAP
+            beliefs.ModifyState("treatPatient", 1);
+
+            Debug.Log("Doctor GoToCubicleDoctor: paciente " + cubicleComp.currentPatient.name + " está siendo tratado y cubículo agregado al inventario");
         }
 
         return true;

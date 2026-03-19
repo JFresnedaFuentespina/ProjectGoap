@@ -727,6 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Doctor
   actions: []
   currentAction: {fileID: 0}
+  patient: {fileID: 0}
 --- !u!114 &-9178540875007766436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,14 +771,13 @@ MonoBehaviour:
   targetTag: 
   duration: 0
   preContidions:
-  - key: treatPatient
+  - key: readyToTreat
     value: 1
   afterEffects:
   - key: isCured
     value: 1
   agent: {fileID: 1642673439812505920}
   running: 0
-  isDoctor: 1
 --- !u!114 &7522723000220157656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 0
+  duration: 10
   preContidions:
   - key: exhausted
     value: 1

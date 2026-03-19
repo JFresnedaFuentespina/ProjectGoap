@@ -4,14 +4,23 @@ public class GetTreated : GAction
 {
     public override bool PrePerform()
     {
-        target = inventory.FindItemWithTag("Cubicle");
-        if (target == null) return false;
+        Debug.Log("GetTreated PrePerform START");
+
+        target = agent.GetComponent<Doctor>().patient;
+
+        if (target == null)
+        {
+            Debug.Log("GetTreated FALLA: no hay cubículo en inventario");
+            return false;
+        }
+
+        Debug.Log("GetTreated OK: paciente encontrado " + target.name);
         return true;
     }
 
     public override bool PostPerform()
     {
-        GameObject patient = target.GetComponent<Cubicle>().currentPatient;
+        GameObject patient = target;
         if (patient != null)
         {
             patient.GetComponent<GAgent>().beliefs.ModifyState("isCured", 1);
