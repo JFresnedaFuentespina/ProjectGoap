@@ -1,31 +1,25 @@
-using UnityEngine;
+﻿public class GetTreated : GAction {
 
-public class GetTreated : GAction
-{
-    public override bool PrePerform()
-    {
-        Debug.Log("GetTreated PrePerform START");
+    public override bool PrePerform() {
 
-        target = agent.GetComponent<Doctor>().patient;
-
+        // Get a free cubicle
+        target = inventory.FindItemWithTag("Cubicle");
+        // Check that we did indeed get a cubicle
         if (target == null)
-        {
-            Debug.Log("GetTreated FALLA: no hay cubículo en inventario");
+            // No cubicle so return false
             return false;
-        }
-
-        Debug.Log("GetTreated OK: paciente encontrado " + target.name);
+        // All good
         return true;
     }
 
-    public override bool PostPerform()
-    {
-        GameObject patient = target;
-        if (patient != null)
-        {
-            patient.GetComponent<GAgent>().beliefs.ModifyState("isCured", 1);
-            Debug.Log("Paciente " + patient.name + " ha sido curado");
-        }
+    public override bool PostPerform() {
+
+        // Add a new state "Treated"
+        GWorld.Instance.GetWorld().ModifyState("Treated", 1);
+        // Add isCured to agents beliefs
+        beliefs.ModifyState("isCured", 1);
+        // Remove the cubicle from the list
+        inventory.RemoveItem(target);
         return true;
     }
 }

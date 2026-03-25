@@ -1,21 +1,23 @@
-using UnityEngine;
+﻿public class Patient : GAgent {
 
-public class Patient : GAgent
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    new void Start()
-    {
+    new void Start() {
+
+        // Call the base start
         base.Start();
-        Subgoal s1 = new Subgoal("isWaiting", 1, true);
+        // Set up the subgoal "isWaiting"
+        SubGoal s1 = new SubGoal("isWaiting", 1, true);
+        // Add it to the goals
         goals.Add(s1, 3);
 
-        Subgoal s2 = new Subgoal("isTreated", 1, true);
+        // Set up the subgoal "isTreated"
+        SubGoal s2 = new SubGoal("isTreated", 1, true);
+        // Add it to the goals
         goals.Add(s2, 5);
-        
-        // Subgoal s3 = new Subgoal("isCured", 1, true);
-        // goals.Add(s3, 5);
 
-        Subgoal s4 = new Subgoal("isHome", 1, true);
-        goals.Add(s4, 5);
+        // Set up the subgoal "isHome"
+        SubGoal s3 = new SubGoal("isHome", 1, true);
+        // Add it to the goals
+        goals.Add(s3, 1);
     }
+
 }

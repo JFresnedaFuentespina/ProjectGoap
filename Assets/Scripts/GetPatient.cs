@@ -1,45 +1,46 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GetPatient : GAction
-{
+public class GetPatient : GAction {
+
+    // Resource in this case = cubicle
     GameObject resource;
 
-    public override bool PrePerform()
-    {
-        target = GWorld.Instance.RemovePatient(); // Quita al paciente de la cola
+    public override bool PrePerform() {
+
+        // Set our target patient and remove them from the Queue
+        target = GWorld.Instance.RemovePatient();
+        // Check that we did indeed get a patient
         if (target == null)
-        {
+            // No patient so return false
             return false;
-        }
+        // Grab a free cubicle and remove it from the list
         resource = GWorld.Instance.RemoveCubicle();
-        if (resource != null)
-        {
+        // Test did we get one?
+        if (resource != null) {
+
+            // Yes we have a cubicle
             inventory.AddItem(resource);
-        }
-        else
-        {
+        } else {
+
+            // No free cubicles so release the patient
             GWorld.Instance.AddPatient(target);
             target = null;
             return false;
         }
 
-        GWorld.Instance.GetWorld().ModifyState("FreeCubicle", -1); // le quitamos un cubiculo libre
+        //take away one cubicle being available from the world state
+        GWorld.Instance.GetWorld().ModifyState("FreeCubicle", -1);
         return true;
     }
 
-    public override bool PostPerform()
-    {
+    public override bool PostPerform() {
+
+        // Remove a patient from the world
         GWorld.Instance.GetWorld().ModifyState("Waiting", -1);
+        if (target) {
 
-        beliefs.ModifyState("patientPickedUp", 1);
-
-        if (target)
-        {
-            Nurse nurse = agent.GetComponent<Nurse>();
-            nurse.carryingPatient = target;
             target.GetComponent<GAgent>().inventory.AddItem(resource);
         }
-
         return true;
     }
 }
