@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -55,6 +55,7 @@ public class GAgent : MonoBehaviour {
 
         currentAction.running = false;
         currentAction.PostPerform();
+        currentAction = null; // Clear it so it doesn't show as "stale" in Inspector
         invoked = false;
     }
 
@@ -99,6 +100,11 @@ public class GAgent : MonoBehaviour {
                     currentGoal = sg.Key;
                     break;
                 }
+            }
+
+            if (actionQueue == null) {
+                // Log only once in a while or specifically for this issue
+                Debug.Log("Agent " + gameObject.name + " has no plan for any goal.");
             }
         }
 

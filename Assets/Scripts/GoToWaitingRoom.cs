@@ -1,4 +1,4 @@
-﻿public class GoToWaitingRoom : GAction {
+public class GoToWaitingRoom : GAction {
     public override bool PrePerform() {
 
         return true;
@@ -11,7 +11,7 @@
         // Patient adds himself to the queue
         GWorld.Instance.AddPatient(this.gameObject);
         // Inject a state into the agents beliefs
-        beliefs.ModifyState("atHospital", 1);
+        beliefs.ModifyState("isWaiting", 1);
 
         return true;
     }

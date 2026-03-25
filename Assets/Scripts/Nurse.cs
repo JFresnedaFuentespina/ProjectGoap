@@ -7,7 +7,7 @@ public class Nurse : GAgent {
         // Call base Start method
         base.Start();
         // Set goal so that it can't be removed so the nurse can repeat this action
-        SubGoal s1 = new SubGoal("treatPatient", 1, false);
+        SubGoal s1 = new SubGoal("patientReady", 1, false);
         goals.Add(s1, 3);
 
         // Resting goal

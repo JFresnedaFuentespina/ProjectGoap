@@ -1,6 +1,9 @@
-﻿public class GoToCubicle : GAction {
+using UnityEngine;
+public class GoToCubicle : GAction
+{
 
-    public override bool PrePerform() {
+    public override bool PrePerform()
+    {
 
         // Get a free cubicle
         target = inventory.FindItemWithTag("Cubicle");
@@ -12,16 +15,40 @@
         return true;
     }
 
-    public override bool PostPerform() {
+    public override bool PostPerform()
+    {
 
-        // Add a new state "TreatingPatient"
-        GWorld.Instance.GetWorld().ModifyState("TreatingPatient", 1);
-        // Give back the cubicle
-        GWorld.Instance.AddCubicle(target);
-        // Remove the cubicle from the list
+        // Add a new state "patientReady"
+        GWorld.Instance.GetWorld().ModifyState("patientReady", 1);
+
+        // Find the patient in the nurse's inventory
+        GameObject patient = inventory.FindItemWithTag("Patient");
+        
+        // Fallback: search for any object with a Patient component if tag fails
+        if (patient == null) {
+            foreach (GameObject item in inventory.items) {
+                if (item != null && item.GetComponent<Patient>() != null) {
+                    patient = item;
+                    break;
+                }
+            }
+        }
+
+        if (patient != null)
+        {
+            // Remove the patient from the nurse's inventory
+            inventory.RemoveItem(patient);
+        }
+        else
+        {
+            string invItems = "";
+            foreach (GameObject item in inventory.items) invItems += item.name + " (" + item.tag + "), ";
+            Debug.LogWarning("Patient not found in inventory! Items in inventory: " + invItems);
+        }
+
+        // We do NOT release the cubicle here anymore.
+        // The patient/doctor will do it after treatment.
         inventory.RemoveItem(target);
-        // Give the cubicle back to the world
-        GWorld.Instance.GetWorld().ModifyState("FreeCubicle", 1);
         return true;
     }
 }

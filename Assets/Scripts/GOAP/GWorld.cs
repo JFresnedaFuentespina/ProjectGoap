@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class GWorld {
@@ -9,6 +9,8 @@ public sealed class GWorld {
     private static WorldStates world;
     // Queue of patients
     private static Queue<GameObject> patients;
+    // Queue of patients waitign for doctor
+    private static Queue<GameObject> patientsWaitingDoctor;
     // Queue of cubicles
     private static Queue<GameObject> cubicles;
 
@@ -18,6 +20,8 @@ public sealed class GWorld {
         world = new WorldStates();
         // Create patients array
         patients = new Queue<GameObject>();
+        // Create patients waiting for doctor queue
+        patientsWaitingDoctor = new Queue<GameObject>();
         // Create cubicles array
         cubicles = new Queue<GameObject>();
         // Find all GameObjects that are tagged "Cubicle"
@@ -53,6 +57,21 @@ public sealed class GWorld {
 
         if (patients.Count == 0) return null;
         return patients.Dequeue();
+    }
+
+    // Add patient waiting for doctor
+    public void AddPatientWaitingDoctor(GameObject p) {
+        patientsWaitingDoctor.Enqueue(p);
+        Debug.Log("[GWORLD]: Patient waiting for doctor: " + p.name);
+    }
+
+    // Remove patient waiting for doctor
+    public GameObject RemovePatientWaitingDoctor() {
+
+        if (patientsWaitingDoctor.Count == 0) return null;
+        GameObject patientToReturn = patientsWaitingDoctor.Dequeue();
+        Debug.Log("[GWORLD]: PATIENT TO RETURN: " + patientToReturn);
+        return patientToReturn;
     }
 
     // Add cubicle

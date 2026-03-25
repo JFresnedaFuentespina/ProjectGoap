@@ -1,6 +1,10 @@
-﻿public class GetTreated : GAction {
+using Unity;
 
-    public override bool PrePerform() {
+public class GetTreated : GAction
+{
+
+    public override bool PrePerform()
+    {
 
         // Get a free cubicle
         target = inventory.FindItemWithTag("Cubicle");
@@ -12,13 +16,19 @@
         return true;
     }
 
-    public override bool PostPerform() {
+    public override bool PostPerform()
+    {
 
-        // Add a new state "Treated"
-        GWorld.Instance.GetWorld().ModifyState("Treated", 1);
+        // Add a new state "isCured" (previously Treated)
+        GWorld.Instance.GetWorld().ModifyState("isCured", 1);
         // Add isCured to agents beliefs
         beliefs.ModifyState("isCured", 1);
-        // Remove the cubicle from the list
+        
+        // Give back the cubicle to the world
+        GWorld.Instance.AddCubicle(target);
+        GWorld.Instance.GetWorld().ModifyState("FreeCubicle", 1);
+        
+        // Remove the cubicle from the patient's inventory
         inventory.RemoveItem(target);
         return true;
     }

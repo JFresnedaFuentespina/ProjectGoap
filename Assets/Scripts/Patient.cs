@@ -1,4 +1,4 @@
-﻿public class Patient : GAgent {
+public class Patient : GAgent {
 
     new void Start() {
 
@@ -9,8 +9,12 @@
         // Add it to the goals
         goals.Add(s1, 3);
 
-        // Set up the subgoal "isTreated"
-        SubGoal s2 = new SubGoal("isTreated", 1, true);
+        // NEW: Subgoal to reach the cubicle (matching GoToCubicle effect)
+        SubGoal s4 = new SubGoal("atCubicle", 1, true);
+        goals.Add(s4, 4);
+
+        // Set up the subgoal "isCured"
+        SubGoal s2 = new SubGoal("isCured", 1, true);
         // Add it to the goals
         goals.Add(s2, 5);
 

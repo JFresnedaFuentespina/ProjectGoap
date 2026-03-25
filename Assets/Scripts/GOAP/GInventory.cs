@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GInventory {
@@ -44,7 +44,7 @@ public class GInventory {
             }
         }
         // Do we have something to remove?
-        if (indexToRemove >= 1) {
+        if (indexToRemove >= 0) {
 
             // Yes we do.  So remove the item at indexToRemove
             items.RemoveAt(indexToRemove);

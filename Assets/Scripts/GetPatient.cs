@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class GetPatient : GAction {
 
@@ -40,6 +40,12 @@ public class GetPatient : GAction {
         if (target) {
 
             target.GetComponent<GAgent>().inventory.AddItem(resource);
+            // Trigger the patient's GoToCubicle action by giving them the belief
+            target.GetComponent<GAgent>().beliefs.ModifyState("atCubicle", 0); // 0 just adds the key
+            
+            // Add the patient to the nurse's inventory so she can "carry" them to the cubicle
+            inventory.AddItem(target);
+            Debug.Log("Nurse picked up patient: " + target.name + " with tag: " + target.tag);
         }
         return true;
     }

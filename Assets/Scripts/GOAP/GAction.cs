@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -84,7 +84,7 @@ public abstract class GAction : MonoBehaviour {
         foreach (KeyValuePair<string, int> p in preconditions) {
 
             if (!conditions.ContainsKey(p.Key)) {
-
+                Debug.Log("[GOAP]: Action " + actionName + " failed due to missing precondition: " + p.Key);
                 return false;
             }
         }
