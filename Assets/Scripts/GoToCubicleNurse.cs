@@ -32,6 +32,15 @@ public class GoToCubicleNurse : GAction
             {
                 cubicleComp.currentPatient = patient;
                 Debug.Log("Nurse PostPerform: paciente " + patient.name + " asignado al cubículo");
+
+                // FISICO: Soltamos al paciente
+                patient.transform.SetParent(null);
+                patient.transform.position = target.transform.position; // Lo dejamos en el cubículo
+                
+                UnityEngine.AI.NavMeshAgent patientNav = patient.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                if (patientNav != null) patientNav.enabled = true;
+                
+                patient.GetComponent<GAgent>().enabled = true;
             }
             else
             {

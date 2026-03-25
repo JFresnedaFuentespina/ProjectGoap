@@ -21,6 +21,13 @@ public class WorldStates
     {
         return states.ContainsKey(key);
     }
+    
+    public int GetState(string key)
+    {
+        if (states.ContainsKey(key))
+            return states[key];
+        return 0;
+    }
 
     public void AddState(string key, int value)
     {

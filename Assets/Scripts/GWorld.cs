@@ -7,6 +7,7 @@ public sealed class GWorld
     private static readonly GWorld instance = new GWorld();
     private static WorldStates world;
     private static Queue<GameObject> patients;
+    private static Queue<GameObject> patientsWaitingDoctor;
     private static Queue<GameObject> cubicles;
     private static Dictionary<string, int> globalInts = new Dictionary<string, int>();
     private static Dictionary<int, bool> patientsBeingTreated = new Dictionary<int, bool>();
@@ -17,6 +18,7 @@ public sealed class GWorld
         world = new WorldStates();
         patients = new Queue<GameObject>();
         cubicles = new Queue<GameObject>();
+        patientsWaitingDoctor = new Queue<GameObject>();
 
         GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cubicle");
         foreach (GameObject c in cubes)
@@ -28,7 +30,7 @@ public sealed class GWorld
         {
             world.ModifyState("FreeCubicle", cubes.Length);
         }
-        // Time.timeScale = 4;
+        Time.timeScale = 4;
     }
 
     private GWorld()
@@ -44,6 +46,24 @@ public sealed class GWorld
     public WorldStates GetWorld()
     {
         return world;
+    }
+
+    public void AddPatientWaiting(GameObject p)
+    {
+        patientsWaitingDoctor.Enqueue(p);
+        Debug.Log($"[GWORLD] Paciente añadido a la cola de espera. Total en cola: {patientsWaitingDoctor.Count}");
+    }
+
+    public GameObject RemovePatientWaiting()
+    {
+        if (patientsWaitingDoctor.Count == 0)
+        {
+            Debug.LogWarning("[GWORLD] Intento de sacar paciente, pero la cola está VACÍA.");
+            return null;
+        }
+        GameObject p = patientsWaitingDoctor.Dequeue();
+        Debug.Log($"[GWORLD] Paciente {p.name} sacado de la cola. Quedan: {patientsWaitingDoctor.Count}");
+        return p;
     }
 
     public void AddPatient(GameObject p)

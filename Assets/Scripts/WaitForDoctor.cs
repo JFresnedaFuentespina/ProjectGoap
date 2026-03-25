@@ -4,25 +4,21 @@ public class WaitForDoctor : GAction
 {
     public override bool PrePerform()
     {
-        int patientID = agent.gameObject.GetInstanceID();
-
-        if (!beliefs.HasState("waitingDoctor"))
-            return false;
-
-        // Verifica si este paciente está siendo tratado
-        if (!GWorld.Instance.IsPatientBeingTreated(patientID))
-        {
-            Debug.Log("Paciente " + agent.name + ": esperando a ser tratado por doctor...");
-            return false;
-        }
-
         return true;
     }
     public override bool PostPerform()
     {
-        int patientID = agent.gameObject.GetInstanceID();
-        GWorld.Instance.SetPatientBeingTreated(patientID, false); // liberar estado
-        beliefs.ModifyState("isCured", 1);
+        // 1. Notifica al mundo que hay alguien listo
+        GWorld.Instance.GetWorld().ModifyState("waitingForDoctor", 1);
+
+        // 2. Se añade a sí mismo a la cola
+        GWorld.Instance.AddPatientWaiting(this.gameObject);
+
+        // 3. Se marca como "en el cubículo" para sus propias metas
+        beliefs.ModifyState("atCubicle", 1);
+
+        Debug.Log($"[PATIENT] {gameObject.name} registrado en la cola de espera del Doctor.");
         return true;
     }
+
 }

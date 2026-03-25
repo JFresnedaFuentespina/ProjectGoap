@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86226fda870c53049bdabb435cbf28a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubicle
-  id: 1
+  id: 0
   currentPatient: {fileID: 0}
 --- !u!1 &306721101
 GameObject:
@@ -566,7 +566,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1314719950129966554, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
-      propertyPath: preContidions.Array.data[0].key
+      propertyPath: afterEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314719950129966554, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
+      propertyPath: afterEffects.Array.data[0].key
       value: treatPatient
       objectReference: {fileID: 0}
     - target: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
@@ -4796,7 +4800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86226fda870c53049bdabb435cbf28a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubicle
-  id: 2
+  id: 0
   currentPatient: {fileID: 0}
 --- !u!1 &1999376859
 GameObject:

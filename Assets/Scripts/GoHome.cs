@@ -4,7 +4,11 @@ public class GoHome : GAction
 {
     public override bool PrePerform()
     {
-        return true;
+        if (beliefs.HasState("isCured") && beliefs.GetState("isCured") > 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public override bool PostPerform()

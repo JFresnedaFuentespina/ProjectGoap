@@ -746,10 +746,10 @@ MonoBehaviour:
   targetTag: Cubicle
   duration: 3
   preContidions:
-  - key: patientInCubicle
+  - key: waitingForDoctor
     value: 1
   afterEffects:
-  - key: treatPatient
+  - key: atCubicle
     value: 1
   agent: {fileID: 1642673439812505920}
   running: 0
@@ -769,9 +769,9 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 0
+  duration: 2
   preContidions:
-  - key: readyToTreat
+  - key: atCubicle
     value: 1
   afterEffects:
   - key: isCured

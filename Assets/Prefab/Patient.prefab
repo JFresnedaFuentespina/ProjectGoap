@@ -3190,10 +3190,10 @@ MonoBehaviour:
   targetTag: 
   duration: 0
   preContidions:
-  - key: atHospital
+  - key: waitingDoctor
     value: 1
   afterEffects:
-  - key: waitingDoctor
+  - key: isTreated
     value: 1
   agent: {fileID: 0}
   running: 0
@@ -3214,12 +3214,12 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 20
+  duration: 1000
   preContidions:
-  - key: waitingDoctor
+  - key: atCubicle
     value: 1
   afterEffects:
-  - key: isTreated
+  - key: waitingDoctor
     value: 1
   agent: {fileID: 0}
   running: 0
@@ -3230,7 +3230,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7881807149238628900}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1775b6b82169f244953f3b141ac2502, type: 3}
   m_Name: 
